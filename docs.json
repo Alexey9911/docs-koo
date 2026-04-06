@@ -1,122 +1,151 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
-  "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+  "name": "Pixie",
+  "logo": {
+    "light": "/logo/dark.svg",
+    "dark": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#1a1a1a",
+    "light": "#404040",
+    "dark": "#000000"
+  },
+  "anchors": {
+    "from": "#1a1a1a",
+    "to": "#ffffff"
+  },
+  "appearance": {
+    "default": "dark"
+  },
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "GitHub",
+          "icon": "github",
+          "href": "https://github.com/Neyrspmnd/neyrs-repo"
+        },
+        {
+          "anchor": "Twitter",
+          "icon": "x-twitter",
+          "href": "https://x.com/NeyrsDeFI"
+        },
+        {
+          "anchor": "Telegram",
+          "icon": "telegram",
+          "href": "https://t.me/NeyrsDeFI"
+        }
+      ]
+    },
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "GETTING STARTED",
+            "icon": "rocket",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "introduction/quickstart",
+              "introduction/architecture"
             ]
           },
           {
-            "group": "Customization",
+            "group": "CORE CAPABILITIES",
+            "icon": "wand-magic-sparkles",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "core-features/natural-language",
+              "core-features/wallet-operations",
+              "core-features/defi-integration",
+              "core-features/commerce-payments"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "INTEGRATIONS",
+            "icon": "plug",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "integrations/solana",
+              "integrations/wallet-security",
+              "integrations/transaction-simulation"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "API Reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Introduction",
+            "icon": "book",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/introduction",
+              "api-reference/authentication"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Chat Operations",
+            "icon": "messages",
+            "pages": [
+              "api-reference/sessions/create-session",
+              "api-reference/sessions/get-session",
+              "api-reference/sessions/delete-session"
+            ]
+          },
+          {
+            "group": "Messages",
+            "icon": "comment",
+            "pages": [
+              "api-reference/messages/send-message",
+              "api-reference/messages/get-history"
+            ]
+          },
+          {
+            "group": "Wallet & Portfolio",
+            "icon": "wallet",
             "pages": [
               "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/endpoint/create"
+            ]
+          },
+          {
+            "group": "Analytics",
+            "icon": "chart-simple",
+            "pages": [
+              "api-reference/analytics/get-metrics",
+              "api-reference/analytics/get-usage"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    ]
   },
   "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Try Pixie",
+      "href": "https://www.neyrs.cloud"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/NeyrsDeFI",
+      "github": "https://github.com/Neyrspmnd/neyrs-repo",
+      "telegram": "https://t.me/NeyrsDeFI",
+      "website": "https://www.neyrs.cloud"
     }
   }
 }

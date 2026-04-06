@@ -1,0 +1,167 @@
+---
+title: "Commerce Payments"
+description: "Purchase goods with USDC on Solana"
+icon: "cart-shopping"
+---
+
+Pixie enables e-commerce purchases using USDC through integrated payment processing.
+
+## Supported Platforms
+
+<CardGroup cols={2}>
+  <Card title="Amazon" icon="amazon">
+    Gift cards and direct purchases
+  </Card>
+  <Card title="Gift Cards" icon="gift">
+    Major retailers and services
+  </Card>
+  <Card title="Digital Goods" icon="download">
+    Software, subscriptions, and licenses
+  </Card>
+  <Card title="Services" icon="handshake">
+    Freelance and professional services
+  </Card>
+</CardGroup>
+
+## How It Works
+
+<Steps>
+  <Step title="Request Purchase">
+    Tell Pixie what you want to buy using natural language
+  </Step>
+  <Step title="USDC Calculation">
+    Pixie calculates required USDC amount at current exchange rate
+  </Step>
+  <Step title="Approve Transaction">
+    Confirm USDC transfer in your wallet
+  </Step>
+  <Step title="Payment Processing">
+    Payment processor converts USDC to fiat
+  </Step>
+  <Step title="Order Fulfillment">
+    Purchase completed on merchant platform
+  </Step>
+</Steps>
+
+## Example Commands
+
+### Amazon Gift Cards
+
+```text
+Buy a $50 Amazon gift card with USDC
+```
+
+```text
+Purchase $100 Amazon credit using USDC
+```
+
+### Direct Purchases
+
+```text
+Buy [product name] on Amazon with USDC
+```
+
+<Note>
+  Direct purchases require Amazon account linking. Gift cards can be purchased without account connection.
+</Note>
+
+## Payment Flow
+
+| Step | Description | Time |
+|------|-------------|------|
+| **Price Quote** | Current USDC/USD rate retrieved | ~100ms |
+| **Amount Calculation** | USDC amount calculated with 1% buffer | ~10ms |
+| **User Approval** | Wallet transaction confirmation | Variable |
+| **USDC Transfer** | Tokens sent to payment processor | ~400ms |
+| **Fiat Conversion** | USDC converted to USD | ~2s |
+| **Order Placement** | Purchase completed on platform | ~3s |
+
+## Pricing
+
+Pixie uses real-time USDC/USD rates with minimal markup:
+
+| Component | Fee |
+|-----------|-----|
+| USDC Transfer | ~0.000005 SOL |
+| Payment Processing | 1.5% |
+| Exchange Rate Buffer | 0.5% |
+| **Total Markup** | **~2%** |
+
+**Example:**
+- Product Price: $50.00
+- USDC Required: 51.00 USDC (includes fees)
+- Solana Fee: ~0.000005 SOL
+
+## Supported Currencies
+
+Primary currency is USD. Additional currencies available:
+
+- EUR (Euro)
+- GBP (British Pound)
+- CAD (Canadian Dollar)
+- AUD (Australian Dollar)
+
+## Security
+
+<CardGroup cols={2}>
+  <Card title="Non-Custodial" icon="shield">
+    USDC transferred directly to payment processor
+  </Card>
+  <Card title="Escrow Protection" icon="lock">
+    Funds held until order confirmation
+  </Card>
+  <Card title="Refund Policy" icon="rotate-left">
+    Failed orders refunded within 24 hours
+  </Card>
+  <Card title="Transaction Proof" icon="receipt">
+    On-chain verification for all payments
+  </Card>
+</CardGroup>
+
+## Refund Process
+
+If a purchase fails or is cancelled:
+
+1. **Automatic Detection:** System detects failed order
+2. **USDC Return:** Funds returned to original wallet
+3. **Confirmation:** On-chain transaction within 24 hours
+
+<Warning>
+  Refunds are processed in USDC at the original transfer amount. Exchange rate fluctuations may affect USD value.
+</Warning>
+
+## Limitations
+
+- Minimum purchase: $10 USD
+- Maximum purchase: $1,000 USD per transaction
+- Daily limit: $5,000 USD per wallet
+- Geographic restrictions apply based on merchant policies
+
+## Transaction History
+
+View commerce transactions:
+
+```text
+Show my purchase history
+```
+
+| Date | Merchant | Amount | Status |
+|------|----------|--------|--------|
+| Today | Amazon | 51.00 USDC | Completed |
+| Yesterday | Gift Card | 25.50 USDC | Completed |
+| 2 days ago | Amazon | 102.00 USDC | Completed |
+
+## Supported Gift Card Providers
+
+- Amazon
+- Apple/iTunes
+- Google Play
+- Steam
+- Netflix
+- Spotify
+- Uber
+- DoorDash
+
+<Card title="Payment Processor" icon="building" href="https://www.neyrs.cloud">
+  Learn more about our payment infrastructure
+</Card>

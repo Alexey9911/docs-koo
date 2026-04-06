@@ -1,0 +1,118 @@
+---
+title: "Get Metrics"
+api: "GET https://api.neyrs.cloud/v1/analytics/metrics"
+description: "Retrieve usage metrics and statistics"
+---
+
+### Authorization
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token. Format: `Bearer pixie_live_abc123def456`
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="startDate" type="string">
+  Start date for metrics. Format: ISO 8601 (YYYY-MM-DD)
+</ParamField>
+
+<ParamField query="endDate" type="string">
+  End date for metrics. Format: ISO 8601 (YYYY-MM-DD)
+</ParamField>
+
+### Response
+
+<ResponseField name="period" type="object">
+  Time period for metrics
+  
+  Properties:
+  - `startDate` (string): Start date
+  - `endDate` (string): End date
+</ResponseField>
+
+<ResponseField name="sessions" type="object">
+  Session metrics
+  
+  Properties:
+  - `total` (number): Total sessions
+  - `active` (number): Currently active sessions
+  - `avgDuration` (number): Average duration in seconds
+</ResponseField>
+
+<ResponseField name="messages" type="object">
+  Message metrics
+  
+  Properties:
+  - `total` (number): Total messages
+  - `avgPerSession` (number): Average messages per session
+</ResponseField>
+
+<ResponseField name="transactions" type="object">
+  Transaction metrics
+  
+  Properties:
+  - `total` (number): Total transactions
+  - `successful` (number): Successful transactions
+  - `failed` (number): Failed transactions
+  - `totalVolume` (number): Total volume in USD
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl --request GET \
+  --url 'https://api.neyrs.cloud/v1/analytics/metrics?startDate=2024-03-01&endDate=2024-03-08' \
+  --header 'Authorization: Bearer pixie_live_abc123def456'
+```
+
+```javascript Node.js
+const response = await fetch(
+  'https://api.neyrs.cloud/v1/analytics/metrics?startDate=2024-03-01&endDate=2024-03-08',
+  {
+    headers: {
+      'Authorization': `Bearer ${process.env.PIXIE_API_KEY}`
+    }
+  }
+);
+```
+
+```python Python
+import requests
+
+response = requests.get(
+    'https://api.neyrs.cloud/v1/analytics/metrics',
+    params={
+        'startDate': '2024-03-01',
+        'endDate': '2024-03-08'
+    },
+    headers={
+        'Authorization': f'Bearer {api_key}'
+    }
+)
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Success
+{
+  "period": {
+    "startDate": "2024-03-01",
+    "endDate": "2024-03-08"
+  },
+  "sessions": {
+    "total": 1247,
+    "active": 23,
+    "avgDuration": 342
+  },
+  "messages": {
+    "total": 8934,
+    "avgPerSession": 7.2
+  },
+  "transactions": {
+    "total": 2847,
+    "successful": 2791,
+    "failed": 56,
+    "totalVolume": 1847392.47
+  }
+}
+```
+</ResponseExample>

@@ -1,0 +1,105 @@
+---
+title: "Create Session"
+api: "POST https://api.neyrs.cloud/v1/sessions"
+description: "Initialize a new chat session with Pixie agent"
+---
+
+### Authorization
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token. Format: `Bearer pixie_live_abc123def456`
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="walletAddress" type="string" required>
+  Solana wallet address. Format: Base58 encoded public key
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  Optional session metadata
+  
+  Properties:
+  - `userAgent` (string): Client user agent
+  - `ipAddress` (string): Client IP address
+  - `referrer` (string): Referrer URL
+</ParamField>
+
+### Response
+
+<ResponseField name="sessionId" type="string">
+  Unique session identifier. Format: `session_<16 chars>`
+</ResponseField>
+
+<ResponseField name="walletAddress" type="string">
+  Connected wallet address
+</ResponseField>
+
+<ResponseField name="createdAt" type="string">
+  ISO 8601 timestamp of session creation
+</ResponseField>
+
+<ResponseField name="expiresAt" type="string">
+  ISO 8601 timestamp of session expiration (24 hours)
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl --request POST \
+  --url https://api.neyrs.cloud/v1/sessions \
+  --header 'Authorization: Bearer pixie_live_abc123def456' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "walletAddress": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://api.neyrs.cloud/v1/sessions', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${process.env.PIXIE_API_KEY}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    walletAddress: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://api.neyrs.cloud/v1/sessions',
+    headers={
+        'Authorization': f'Bearer {api_key}',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'walletAddress': '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU'
+    }
+)
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Success
+{
+  "sessionId": "session_abc123def456",
+  "walletAddress": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+  "createdAt": "2024-03-08T14:30:00Z",
+  "expiresAt": "2024-03-09T14:30:00Z"
+}
+```
+
+```json 400 - Bad Request
+{
+  "error": {
+    "code": "validation_error",
+    "message": "Invalid wallet address format",
+    "field": "walletAddress"
+  }
+}
+```
+</ResponseExample>

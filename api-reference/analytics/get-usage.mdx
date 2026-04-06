@@ -1,0 +1,86 @@
+---
+title: "Get Usage"
+api: "GET https://api.neyrs.cloud/v1/analytics/usage"
+description: "Retrieve API usage data and rate limits"
+---
+
+### Authorization
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token. Format: `Bearer pixie_live_abc123def456`
+</ParamField>
+
+### Response
+
+<ResponseField name="tier" type="string">
+  Current subscription tier. Options: `free`, `pro`, `enterprise`
+</ResponseField>
+
+<ResponseField name="limits" type="object">
+  Rate limits for current tier
+  
+  Properties:
+  - `requestsPerMinute` (number): Max requests per minute
+  - `transactionsPerDay` (number): Max transactions per day
+</ResponseField>
+
+<ResponseField name="usage" type="object">
+  Current usage statistics
+  
+  Properties:
+  - `requestsToday` (number): Requests made today
+  - `transactionsToday` (number): Transactions today
+  - `requestsThisMinute` (number): Requests in current minute
+</ResponseField>
+
+<ResponseField name="resetAt" type="string">
+  ISO 8601 timestamp when daily limits reset
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl --request GET \
+  --url https://api.neyrs.cloud/v1/analytics/usage \
+  --header 'Authorization: Bearer pixie_live_abc123def456'
+```
+
+```javascript Node.js
+const response = await fetch(
+  'https://api.neyrs.cloud/v1/analytics/usage',
+  {
+    headers: {
+      'Authorization': `Bearer ${process.env.PIXIE_API_KEY}`
+    }
+  }
+);
+```
+
+```python Python
+import requests
+
+response = requests.get(
+    'https://api.neyrs.cloud/v1/analytics/usage',
+    headers={
+        'Authorization': f'Bearer {api_key}'
+    }
+)
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Success
+{
+  "tier": "pro",
+  "limits": {
+    "requestsPerMinute": 120,
+    "transactionsPerDay": 1000
+  },
+  "usage": {
+    "requestsToday": 347,
+    "transactionsToday": 89,
+    "requestsThisMinute": 3
+  },
+  "resetAt": "2024-03-09T00:00:00Z"
+}
+```
+</ResponseExample>

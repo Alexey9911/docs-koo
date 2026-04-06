@@ -1,0 +1,148 @@
+---
+title: "Send Message"
+api: "POST https://api.neyrs.cloud/v1/messages"
+description: "Send a message to Pixie agent"
+---
+
+### Authorization
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token. Format: `Bearer pixie_live_abc123def456`
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="sessionId" type="string" required>
+  Session ID. Format: `session_<16 chars>`
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Natural language command. Max 500 characters.
+  
+  Examples: "Swap 5 SOL for USDC", "Show my balance"
+</ParamField>
+
+<ParamField body="slippage" type="number">
+  Slippage tolerance in basis points. Default: 50 (0.5%)
+</ParamField>
+
+### Response
+
+<ResponseField name="messageId" type="string">
+  Unique message identifier
+</ResponseField>
+
+<ResponseField name="sessionId" type="string">
+  Session identifier
+</ResponseField>
+
+<ResponseField name="intent" type="object">
+  Parsed intent from message
+  
+  Properties:
+  - `action` (string): Action type (swap, transfer, query)
+  - `confidence` (number): Parsing confidence (0-1)
+</ResponseField>
+
+<ResponseField name="response" type="string">
+  Agent response text
+</ResponseField>
+
+<ResponseField name="transaction" type="object">
+  Transaction details (if applicable)
+  
+  Properties:
+  - `type` (string): Transaction type
+  - `parameters` (object): Transaction parameters
+  - `route` (object): Routing information
+</ResponseField>
+
+<ResponseField name="timestamp" type="string">
+  ISO 8601 timestamp
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl --request POST \
+  --url https://api.neyrs.cloud/v1/messages \
+  --header 'Authorization: Bearer pixie_live_abc123def456' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "sessionId": "session_abc123def456",
+    "message": "Swap 5 SOL for USDC",
+    "slippage": 50
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://api.neyrs.cloud/v1/messages', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${process.env.PIXIE_API_KEY}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    sessionId: 'session_abc123def456',
+    message: 'Swap 5 SOL for USDC',
+    slippage: 50
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://api.neyrs.cloud/v1/messages',
+    headers={
+        'Authorization': f'Bearer {api_key}',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'sessionId': 'session_abc123def456',
+        'message': 'Swap 5 SOL for USDC',
+        'slippage': 50
+    }
+)
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Success
+{
+  "messageId": "msg_abc123def456",
+  "sessionId": "session_abc123def456",
+  "intent": {
+    "action": "swap",
+    "confidence": 0.98
+  },
+  "response": "I'll swap 5 SOL for USDC. Expected output: ~736.25 USDC with 0.12% price impact via Orca Whirlpool.",
+  "transaction": {
+    "type": "swap",
+    "parameters": {
+      "inputToken": "So11111111111111111111111111111111111111112",
+      "outputToken": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "amount": 5000000000
+    },
+    "route": {
+      "inAmount": "5000000000",
+      "outAmount": "736250000",
+      "priceImpact": 0.12
+    }
+  },
+  "timestamp": "2024-03-08T14:30:00Z"
+}
+```
+
+```json 422 - Unprocessable Entity
+{
+  "error": {
+    "code": "parsing_error",
+    "message": "Could not extract transaction parameters",
+    "details": {
+      "reason": "Ambiguous intent - please specify tokens and amounts"
+    }
+  }
+}
+```
+</ResponseExample>

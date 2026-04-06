@@ -1,0 +1,193 @@
+---
+title: "Wallet Operations"
+description: "Send, swap, and stake SOL and SPL tokens"
+icon: "wallet"
+---
+
+Pixie executes core wallet operations through natural language commands without requiring complex interfaces.
+
+## Token Swaps
+
+Execute token swaps with automatic routing through Jupiter V6.
+
+### Basic Swap
+
+```text
+Swap 10 SOL for USDC
+```
+
+Pixie will:
+1. Query Jupiter for optimal route
+2. Calculate expected output
+3. Show price impact
+4. Request wallet approval
+
+### Advanced Swap Options
+
+```text
+Swap 100 USDC for BONK with 2% slippage
+```
+
+```text
+Trade 50 USDC to JUP, max slippage 1.5%
+```
+
+<CardGroup cols={2}>
+  <Card title="Jupiter Integration" icon="route">
+    Optimal routing across all Solana DEXs
+  </Card>
+  <Card title="Price Impact" icon="chart-line">
+    Real-time calculation before execution
+  </Card>
+  <Card title="Slippage Protection" icon="shield">
+    Configurable tolerance prevents bad fills
+  </Card>
+  <Card title="MEV Protection" icon="lock">
+    Private transactions for large swaps
+  </Card>
+</CardGroup>
+
+## Token Transfers
+
+Send SOL or SPL tokens to any Solana address.
+
+### Basic Transfer
+
+```text
+Send 5 USDC to 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU
+```
+
+### SNS Domain Support
+
+```text
+Transfer 0.1 SOL to alice.sol
+```
+
+### Transfer Confirmation
+
+| Field | Value |
+|-------|-------|
+| Token | USDC |
+| Amount | 5.00 |
+| Recipient | 7xKX...gAsU |
+| Fee | ~0.000005 SOL |
+
+<Warning>
+  Always verify recipient addresses before approving transfers. Blockchain transactions are irreversible.
+</Warning>
+
+## Staking Operations
+
+Stake SOL to earn rewards through Solana validators.
+
+### Stake SOL
+
+```text
+Stake 10 SOL
+```
+
+Pixie automatically selects high-performance validators based on:
+- Commission rate
+- Uptime percentage
+- Total stake
+- APY
+
+### Unstake SOL
+
+```text
+Unstake 5 SOL
+```
+
+<Note>
+  Unstaking has a cooldown period of 2-3 days (1 epoch) before funds become available.
+</Note>
+
+### Staking Metrics
+
+| Metric | Value |
+|--------|-------|
+| Average APY | 6.8% |
+| Minimum Stake | 0.01 SOL |
+| Cooldown Period | 2-3 days |
+| Validator Selection | Automatic |
+
+## Balance Queries
+
+Check token balances without executing transactions.
+
+```text
+Show my balance
+```
+
+**Response:**
+```
+SOL: 12.45 ($1,867.50)
+USDC: 5,432.10 ($5,432.10)
+BONK: 1,250,000 ($18.75)
+JUP: 89.32 ($71.46)
+
+Total Portfolio Value: $7,389.81
+```
+
+## Transaction History
+
+View recent wallet activity:
+
+```text
+Show my transaction history
+```
+
+| Time | Type | Details | Status |
+|------|------|---------|--------|
+| 2m ago | Swap | 5 SOL → 750 USDC | Confirmed |
+| 15m ago | Transfer | Sent 10 USDC | Confirmed |
+| 1h ago | Stake | 10 SOL staked | Confirmed |
+
+## Price Monitoring
+
+Query current token prices:
+
+```text
+What's the price of SOL?
+```
+
+```text
+Show me JUP price in USD
+```
+
+**Response:**
+```
+JUP: $0.82 USD
+24h Change: +5.3%
+Market Cap: $1.2B
+```
+
+## Supported Tokens
+
+Pixie supports 15,000+ SPL tokens including:
+
+- **Native:** SOL
+- **Stablecoins:** USDC, USDT
+- **DeFi:** JUP, RAY, ORCA
+- **Memecoins:** BONK, WIF, POPCAT
+- **Wrapped Assets:** wBTC, wETH
+
+## Transaction Fees
+
+| Operation | Fee |
+|-----------|-----|
+| Swap | ~0.000005 SOL + DEX fees |
+| Transfer | ~0.000005 SOL |
+| Stake | ~0.000005 SOL |
+| Create Token Account | ~0.002 SOL (one-time) |
+
+<Note>
+  Pixie automatically creates associated token accounts when needed. This adds a one-time cost of ~0.002 SOL.
+</Note>
+
+## Performance
+
+- **Swap Execution:** ~160ms (excluding user approval)
+- **Transfer Execution:** ~50ms (excluding user approval)
+- **Balance Query:** ~200ms
+- **Price Query:** ~150ms

@@ -1,0 +1,118 @@
+---
+title: "Get Message History"
+api: "GET https://api.neyrs.cloud/v1/messages"
+description: "Retrieve conversation history for a session"
+---
+
+### Authorization
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token. Format: `Bearer pixie_live_abc123def456`
+</ParamField>
+
+### Query Parameters
+
+<ParamField query="sessionId" type="string" required>
+  Session ID. Format: `session_<16 chars>`
+</ParamField>
+
+<ParamField query="limit" type="number">
+  Number of messages to return. Default: 50, Max: 100
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor for next page
+</ParamField>
+
+### Response
+
+<ResponseField name="messages" type="array">
+  Array of message objects
+  
+  Each message contains:
+  - `messageId` (string): Message identifier
+  - `role` (string): `user` or `agent`
+  - `content` (string): Message text
+  - `timestamp` (string): ISO 8601 timestamp
+  - `intent` (object): Parsed intent (if applicable)
+</ResponseField>
+
+<ResponseField name="pagination" type="object">
+  Pagination metadata
+  
+  Properties:
+  - `hasMore` (boolean): More messages available
+  - `nextCursor` (string): Cursor for next page
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl --request GET \
+  --url 'https://api.neyrs.cloud/v1/messages?sessionId=session_abc123def456&limit=50' \
+  --header 'Authorization: Bearer pixie_live_abc123def456'
+```
+
+```javascript Node.js
+const response = await fetch(
+  'https://api.neyrs.cloud/v1/messages?sessionId=session_abc123def456&limit=50',
+  {
+    headers: {
+      'Authorization': `Bearer ${process.env.PIXIE_API_KEY}`
+    }
+  }
+);
+```
+
+```python Python
+import requests
+
+response = requests.get(
+    'https://api.neyrs.cloud/v1/messages',
+    params={
+        'sessionId': 'session_abc123def456',
+        'limit': 50
+    },
+    headers={
+        'Authorization': f'Bearer {api_key}'
+    }
+)
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Success
+{
+  "messages": [
+    {
+      "messageId": "msg_abc123def456",
+      "role": "user",
+      "content": "Swap 5 SOL for USDC",
+      "timestamp": "2024-03-08T14:30:00Z",
+      "intent": {
+        "action": "swap",
+        "confidence": 0.98
+      }
+    },
+    {
+      "messageId": "msg_xyz789ghi012",
+      "role": "agent",
+      "content": "I'll swap 5 SOL for USDC. Expected output: ~736.25 USDC",
+      "timestamp": "2024-03-08T14:30:01Z"
+    }
+  ],
+  "pagination": {
+    "hasMore": false,
+    "nextCursor": null
+  }
+}
+```
+
+```json 404 - Not Found
+{
+  "error": {
+    "code": "session_not_found",
+    "message": "Session not found"
+  }
+}
+```
+</ResponseExample>
