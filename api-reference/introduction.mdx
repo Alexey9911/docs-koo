@@ -1,10 +1,10 @@
 ---
 title: "API Introduction"
-description: "Getting started with the Pixie API"
+description: "Getting started with the Neyrs API"
 icon: "book"
 ---
 
-The Pixie API provides programmatic access to intent parsing, transaction building, and portfolio tracking. Built on REST principles with JSON request/response format.
+The Neyrs API provides programmatic access to intent parsing, transaction building, and portfolio tracking. Built on REST principles with JSON request/response format.
 
 ## Base URL
 
@@ -17,7 +17,7 @@ https://api.neyrs.cloud/v1
 All API requests require authentication via Bearer token:
 
 ```bash
-Authorization: Bearer pixie_live_abc123def456
+Authorization: Bearer neyrs_live_abc123def456
 ```
 
 ## Request Format
@@ -25,7 +25,7 @@ Authorization: Bearer pixie_live_abc123def456
 ```bash
 curl --request POST \
   --url https://api.neyrs.cloud/v1/sessions \
-  --header 'Authorization: Bearer pixie_live_abc123def456' \
+  --header 'Authorization: Bearer neyrs_live_abc123def456' \
   --header 'Content-Type: application/json' \
   --data '{
     "walletAddress": "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU"
@@ -111,8 +111,8 @@ Breaking changes will be released as new versions (v2, v3, etc.)
 
 Official SDKs available:
 
-- TypeScript/JavaScript: `npm install @pixie-agent/sdk`
-- Python: `pip install pixie-sdk`
+- TypeScript/JavaScript: `npm install @neyrs-agent/sdk`
+- Python: `pip install neyrs-sdk`
 
 <Note>
   API keys can be generated from the Developer Dashboard. Store keys securely and never expose them in client-side code.

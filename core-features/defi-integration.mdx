@@ -4,7 +4,7 @@ description: "Jupiter aggregation and liquidity routing"
 icon: "chart-line"
 ---
 
-Pixie uses Jupiter V6 to aggregate liquidity across all Solana DEXs, ensuring best price execution with minimal slippage.
+Neyrs uses Jupiter V6 to aggregate liquidity across all Solana DEXs, ensuring best price execution with minimal slippage.
 
 ## How Jupiter Routing Works
 
@@ -93,7 +93,7 @@ Jupiter supports private transaction submission through Jito to prevent:
 
 ## Quote Refresh
 
-Jupiter quotes expire after 30 seconds due to price volatility. Pixie automatically refreshes quotes if:
+Jupiter quotes expire after 30 seconds due to price volatility. Neyrs automatically refreshes quotes if:
 
 - User takes longer than 20 seconds to approve
 - Price moves more than 1% during approval
@@ -101,7 +101,7 @@ Jupiter quotes expire after 30 seconds due to price volatility. Pixie automatica
 
 ## API Integration
 
-Pixie uses Jupiter V6 SDK for route calculation:
+Neyrs uses Jupiter V6 SDK for route calculation:
 
 ```typescript
 import { Jupiter } from '@jup-ag/core';

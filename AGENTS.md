@@ -1,8 +1,8 @@
-# Pixie Documentation Project
+# Neyrs Documentation Project
 
 ## About this project
 
-- This is a documentation site for Pixie, an AI-powered Solana agent
+- This is a documentation site for Neyrs, an AI-powered Solana agent
 - Built on [Mintlify](https://mintlify.com)
 - Pages are MDX files with YAML frontmatter
 - Configuration lives in `docs.json`
@@ -11,7 +11,7 @@
 
 ## Terminology
 
-- Use "agent" not "bot" when referring to Pixie
+- Use "agent" not "bot" when referring to Neyrs
 - Use "wallet operations" not "wallet management"
 - Use "natural language commands" not "chat interface"
 - Use "transaction" not "tx" in documentation

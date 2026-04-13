@@ -7,7 +7,7 @@ description: "Terminate an active session"
 ### Authorization
 
 <ParamField header="Authorization" type="string" required>
-  Bearer token. Format: `Bearer pixie_live_abc123def456`
+  Bearer token. Format: `Bearer neyrs_live_abc123def456`
 </ParamField>
 
 ### Path Parameters
@@ -34,7 +34,7 @@ description: "Terminate an active session"
 ```bash cURL
 curl --request DELETE \
   --url https://api.neyrs.cloud/v1/sessions/session_abc123def456 \
-  --header 'Authorization: Bearer pixie_live_abc123def456'
+  --header 'Authorization: Bearer neyrs_live_abc123def456'
 ```
 
 ```javascript Node.js
@@ -43,7 +43,7 @@ const response = await fetch(
   {
     method: 'DELETE',
     headers: {
-      'Authorization': `Bearer ${process.env.PIXIE_API_KEY}`
+      'Authorization': `Bearer ${process.env.NEYRS_API_KEY}`
     }
   }
 );

@@ -4,11 +4,11 @@ description: "Native blockchain integration for transaction execution"
 icon: "link"
 ---
 
-Pixie is built specifically for Solana, leveraging its high-throughput architecture for sub-second transaction execution.
+Neyrs is built specifically for Solana, leveraging its high-throughput architecture for sub-second transaction execution.
 
 ## Wallet Connection
 
-Pixie supports all major Solana wallets through the Wallet Adapter standard:
+Neyrs supports all major Solana wallets through the Wallet Adapter standard:
 
 <CardGroup cols={3}>
   <Card title="Phantom" icon="ghost">
@@ -26,7 +26,7 @@ Pixie supports all major Solana wallets through the Wallet Adapter standard:
 
 <Steps>
   <Step title="User Clicks Connect">
-    Pixie triggers wallet adapter connection modal
+    Neyrs triggers wallet adapter connection modal
   </Step>
   <Step title="Select Wallet">
     User chooses their preferred wallet provider
@@ -35,7 +35,7 @@ Pixie supports all major Solana wallets through the Wallet Adapter standard:
     Wallet prompts for read-only access approval
   </Step>
   <Step title="Connection Established">
-    Pixie receives public key and can query balances
+    Neyrs receives public key and can query balances
   </Step>
 </Steps>
 
@@ -55,12 +55,12 @@ const signature = await wallet.signAndSendTransaction(transaction);
 ```
 
 <Warning>
-  Pixie never has access to your private keys. All transaction signing happens in your wallet, not in Pixie's code.
+  Neyrs never has access to your private keys. All transaction signing happens in your wallet, not in Neyrs's code.
 </Warning>
 
 ## RPC Configuration
 
-Pixie uses premium RPC providers for reliability and speed:
+Neyrs uses premium RPC providers for reliability and speed:
 
 | Provider | Endpoint | Features |
 |----------|----------|----------|
@@ -70,7 +70,7 @@ Pixie uses premium RPC providers for reliability and speed:
 
 ## Network Selection
 
-Pixie supports multiple Solana networks:
+Neyrs supports multiple Solana networks:
 
 - **Mainnet Beta:** Production environment (default)
 - **Devnet:** Testing environment for developers
@@ -78,7 +78,7 @@ Pixie supports multiple Solana networks:
 
 ## Token Standards
 
-Pixie supports all Solana token standards:
+Neyrs supports all Solana token standards:
 
 <CardGroup cols={2}>
   <Card title="SPL Tokens" icon="coins">
@@ -97,7 +97,7 @@ Pixie supports all Solana token standards:
 
 ## Account Monitoring
 
-Pixie monitors your wallet for:
+Neyrs monitors your wallet for:
 
 - Balance changes
 - New token accounts
@@ -108,7 +108,7 @@ Pixie monitors your wallet for:
 
 ## Transaction Confirmation
 
-Pixie tracks transactions through multiple commitment levels:
+Neyrs tracks transactions through multiple commitment levels:
 
 | Level | Description | Time |
 |-------|-------------|------|
@@ -120,7 +120,7 @@ Pixie tracks transactions through multiple commitment levels:
 
 ## Compute Budget
 
-Pixie automatically sets optimal compute units for transactions:
+Neyrs automatically sets optimal compute units for transactions:
 
 ```typescript
 const computeUnitLimit = ComputeBudgetProgram.setComputeUnitLimit({
@@ -134,9 +134,9 @@ const computeUnitPrice = ComputeBudgetProgram.setComputeUnitPrice({
 
 ## Error Handling
 
-Common Solana errors and how Pixie handles them:
+Common Solana errors and how Neyrs handles them:
 
-| Error | Cause | Pixie Response |
+| Error | Cause | Neyrs Response |
 |-------|-------|-----------------|
 | Insufficient SOL | Not enough for fees | Prompt to add SOL |
 | Slippage Exceeded | Price moved too much | Refresh quote and retry |
@@ -144,7 +144,7 @@ Common Solana errors and how Pixie handles them:
 | Account Not Found | Token account doesn't exist | Create account automatically |
 
 <Note>
-  Pixie automatically creates associated token accounts when needed. This adds ~0.002 SOL to transaction cost.
+  Neyrs automatically creates associated token accounts when needed. This adds ~0.002 SOL to transaction cost.
 </Note>
 
 ## Performance Metrics

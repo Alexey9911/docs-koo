@@ -4,7 +4,7 @@ description: "Technical architecture and transaction pipeline"
 icon: "diagram-project"
 ---
 
-Pixie uses a multi-stage pipeline to convert natural language into executable Solana transactions with sub-second latency.
+Neyrs uses a multi-stage pipeline to convert natural language into executable Solana transactions with sub-second latency.
 
 ## System Overview
 
@@ -66,7 +66,7 @@ if (simulation.value.err) {
 
 ### 4. User Approval
 
-Transaction presented to wallet for manual confirmation. Pixie never accesses private keys.
+Transaction presented to wallet for manual confirmation. Neyrs never accesses private keys.
 
 ### 5. Broadcast & Monitoring
 
@@ -104,7 +104,7 @@ Transaction sent to Solana with WebSocket monitoring for confirmation.
 
 ## Jupiter V6 Integration
 
-Pixie uses Jupiter's aggregator to access deep liquidity across Solana.
+Neyrs uses Jupiter's aggregator to access deep liquidity across Solana.
 
 **Benefits:**
 - Best price execution across all DEXs
@@ -118,19 +118,19 @@ USDC payment processor converts crypto to fiat for e-commerce purchases:
 
 **Flow:**
 1. User requests purchase via natural language
-2. Pixie calculates USDC amount required
+2. Neyrs calculates USDC amount required
 3. User approves USDC transfer
 4. Payment processor converts to fiat
 5. Order placed on merchant platform
 
 ## State Management
 
-Pixie maintains minimal state for optimal performance:
+Neyrs maintains minimal state for optimal performance:
 
 - Active wallet connection (session-based)
 - Recent transaction history (client-side cache)
 - Portfolio balances (refreshed on-demand)
 
 <Note>
-  Pixie does not store private keys, transaction history, or personal data on servers. All sensitive operations occur client-side.
+  Neyrs does not store private keys, transaction history, or personal data on servers. All sensitive operations occur client-side.
 </Note>

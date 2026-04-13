@@ -7,7 +7,7 @@ description: "Retrieve wallet balances and portfolio value"
 ### Authorization
 
 <ParamField header="Authorization" type="string" required>
-  Bearer token. Format: `Bearer pixie_live_abc123def456`
+  Bearer token. Format: `Bearer neyrs_live_abc123def456`
 </ParamField>
 
 ### Query Parameters
@@ -46,7 +46,7 @@ description: "Retrieve wallet balances and portfolio value"
 ```bash cURL
 curl --request GET \
   --url 'https://api.neyrs.cloud/v1/portfolio?walletAddress=7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU' \
-  --header 'Authorization: Bearer pixie_live_abc123def456'
+  --header 'Authorization: Bearer neyrs_live_abc123def456'
 ```
 
 ```javascript Node.js
@@ -54,7 +54,7 @@ const response = await fetch(
   'https://api.neyrs.cloud/v1/portfolio?walletAddress=7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
   {
     headers: {
-      'Authorization': `Bearer ${process.env.PIXIE_API_KEY}`
+      'Authorization': `Bearer ${process.env.NEYRS_API_KEY}`
     }
   }
 );

@@ -1,6 +1,6 @@
 ---
 title: "Authentication"
-description: "Learn how to authenticate with the Pixie API"
+description: "Learn how to authenticate with the Neyrs API"
 icon: "key"
 ---
 
@@ -8,13 +8,13 @@ All API requests require authentication via Bearer token in the Authorization he
 
 ## API Keys
 
-Generate API keys from the Developer Dashboard at www.neyrs.cloud/dashboard
+Generate API keys from the Developer Dashboard at docs.neyrs.cloud/dashboard
 
 ### Key Format
 
 ```
-pixie_live_abc123def456
-pixie_test_xyz789ghi012
+neyrs_live_abc123def456
+neyrs_test_xyz789ghi012
 ```
 
 - `live_` prefix for production keys
@@ -27,7 +27,7 @@ Include the API key in the Authorization header:
 ```bash
 curl --request GET \
   --url https://api.neyrs.cloud/v1/analytics/metrics \
-  --header 'Authorization: Bearer pixie_live_abc123def456'
+  --header 'Authorization: Bearer neyrs_live_abc123def456'
 ```
 
 ## Key Management
@@ -78,8 +78,8 @@ Control API access with granular scopes:
 ### Environment Variables
 
 ```typescript
-const pixie = new PixieSDK({
-  apiKey: process.env.PIXIE_API_KEY
+const neyrs = new NeyrsSDK({
+  apiKey: process.env.NEYRS_API_KEY
 });
 ```
 

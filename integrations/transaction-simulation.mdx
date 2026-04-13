@@ -4,11 +4,11 @@ description: "Pre-flight validation prevents failed transactions"
 icon: "vial"
 ---
 
-Pixie simulates all transactions before execution to prevent failures and unexpected outcomes.
+Neyrs simulates all transactions before execution to prevent failures and unexpected outcomes.
 
 ## How Simulation Works
 
-Before presenting a transaction for approval, Pixie runs a pre-flight simulation on Solana's RPC:
+Before presenting a transaction for approval, Neyrs runs a pre-flight simulation on Solana's RPC:
 
 ```typescript
 const simulation = await connection.simulateTransaction(transaction, {
@@ -67,7 +67,7 @@ if (simulation.value.err) {
 
 ## Simulation Results
 
-Pixie displays simulation results before user approval:
+Neyrs displays simulation results before user approval:
 
 **Example Swap Simulation:**
 ```

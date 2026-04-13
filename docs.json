@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Pixie",
+  "name": "Neyrs",
   "logo": {
     "light": "/logo/dark.svg",
     "dark": "/logo/light.svg"
@@ -124,8 +124,8 @@
   "navbar": {
     "primary": {
       "type": "button",
-      "label": "Try Pixie",
-      "href": "https://www.neyrs.cloud"
+      "label": "Try Neyrs",
+      "href": "https://docs.neyrs.cloud"
     }
   },
   "contextual": {
@@ -145,7 +145,7 @@
       "x": "https://x.com/NeyrsAgent",
       "github": "https://github.com/Neyrspmnd/neyrs-repo",
       "telegram": "https://t.me/NeyrsDeFI",
-      "website": "https://www.neyrs.cloud"
+      "website": "https://docs.neyrs.cloud"
     }
   }
 }
