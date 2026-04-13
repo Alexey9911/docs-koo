@@ -30,7 +30,7 @@
         {
           "anchor": "Twitter",
           "icon": "x-twitter",
-          "href": "https://x.com/NeyrsDeFI"
+          "href": "https://x.com/NeyrsAgent"
         },
         {
           "anchor": "Telegram",
@@ -142,7 +142,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/NeyrsDeFI",
+      "x": "https://x.com/NeyrsAgent",
       "github": "https://github.com/Neyrspmnd/neyrs-repo",
       "telegram": "https://t.me/NeyrsDeFI",
       "website": "https://www.neyrs.cloud"
